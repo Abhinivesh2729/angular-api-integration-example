@@ -1,0 +1,15 @@
+<h1>My Store</h1>
+
+<button (click)="addProduct()" class="add-btn">Add New Product</button>
+
+<div class="grid">
+  <div *ngFor="let product of products" class="card" (click)="viewProduct(product.id)">    
+    <img [src]="product.images[0]" [alt]="product.title">
+    <h3>{{ product.title }}</h3>
+    <p>${{ product.price }}</p> 
+  </div>
+</div>
+
+<div *ngIf="products.length === 0" class="no-products">
+  <p>No products found. <button (click)="addProduct()">Add the first product</button></p>
+</div>

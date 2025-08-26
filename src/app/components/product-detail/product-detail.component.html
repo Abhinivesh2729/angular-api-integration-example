@@ -1,0 +1,31 @@
+<div *ngIf="product" class="product-detail">
+  <button (click)="goBack()" class="back-btn">← Back to Products</button>
+  
+  <div class="product-content">
+    <div class="product-image">
+      <img [src]="product.images[0]" [alt]="product.title">
+    </div>
+    
+    <div class="product-info">
+      <h1>{{ product.title }}</h1>
+      <p class="price">${{ product.price }}</p>
+      <p class="product-id">Product ID: {{ product.id }}</p>
+      
+      <div *ngIf="product.images.length > 1" class="additional-images">
+        <h3>Additional Images:</h3>
+        <div class="image-gallery">
+          <img *ngFor="let image of product.images.slice(1)" [src]="image" [alt]="product.title">
+        </div>
+      </div>
+      
+      <div class="actions">
+        <button (click)="editProduct()" class="edit-btn">Edit Product</button>
+        <button (click)="deleteProduct()" class="delete-btn">Delete Product</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!product" class="loading">
+  <p>Loading product details...</p>
+</div>
